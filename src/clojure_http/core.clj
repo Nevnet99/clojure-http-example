@@ -13,7 +13,7 @@
   (cj/POST "/books" [] books/add-books-handler)
   (cj/POST "/authentication/login" [] authentication/login-handler)
   (cj/POST "/authentication/logout" [] authentication/logout-handler)
-  (cj/POST "/authentication/register" [ctx] (authentication/register-handler ctx))
+  (cj/POST "/authentication/register" req (authentication/register-handler req))
   (route/not-found "Route not supported"))
 
 
