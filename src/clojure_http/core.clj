@@ -10,9 +10,9 @@
 
 (cj/defroutes app-routes
   (cj/GET "/books" [] books/books-handler)
-  (cj/POST "/books" [] books/add-books-handler)
-  (cj/POST "/authentication/login" [] authentication/login-handler)
-  (cj/POST "/authentication/logout" [] authentication/logout-handler)
+  (cj/POST "/books" req (books/add-books-handler req))
+  (cj/POST "/authentication/login" req (authentication/login-handler req))
+  (cj/POST "/authentication/logout" req (authentication/logout-handler req))
   (cj/POST "/authentication/register" req (authentication/register-handler req))
   (route/not-found "Route not supported"))
 

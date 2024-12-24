@@ -2,9 +2,20 @@
   (:require [clojure-http.db.authentication :as auth]
             [clojure.data.json :as json]))
 
-(defn login-handler [])
+(defn login-handler [{:keys [body]}]
+  (let [{:keys [email password]} (-> body slurp (json/read-str :key-fn keyword))
+        user (auth/get-user email)]
+    (println user)
+    (if (seq user)
+      (if (auth/password-match? password user)
+        {:status 200 :body "Successful login"}
+        {:status 400 :body "Invalid information"})
+      {:status 400 :body "Invalid information"})))
 
-(defn logout-handler [])
+;; (defn login-handler []
+;;   (println-str "hey"))
+
+(defn logout-handler [req])
 
 (defn register-handler [{:keys [body]}]
   (let [body-str (slurp body) ;; Read the input stream into a string

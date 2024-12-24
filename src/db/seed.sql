@@ -33,7 +33,9 @@ INSERT INTO users (username, email, hash, permissions) VALUES
     ('johndoe', 'john.doe@example.com', 'hashed_password_1', ARRAY['USER']),
     ('janedoe', 'jane.doe@example.com', 'hashed_password_2', ARRAY['ADMIN']),
     ('adminuser', 'admin@example.com', 'hashed_password_3', ARRAY['ADMIN', 'OWNER']),
-    ('guest', 'guest@example.com', 'hashed_password_4', ARRAY['USER'])
+    ('guest', 'guest@example.com', 'hashed_password_4', ARRAY['USER']),
+    -- A really cool password
+    ('example', 'main-email@email.com', 'bcrypt+sha512$74f45e5a470fd31302ff01a037a8d34b$12$80ccc50ac20ec8824e35f410c625e3682108d473ed21ee6e', ARRAY['ADMIN', "OWNER", "USER"])
 ON CONFLICT (email) DO NOTHING;
 
 -- Insert books with meaningful examples

@@ -9,6 +9,10 @@ install deps
 `lein deps`
 
 create and run a local docker instance of postgres for local development
+
+<!-- TODO: fix this script -->
+*This needs to be ran in the /scripts directory*
+
 `bash ./scripts/run-and-seed-db.sh`
 
 runs the HTTP server
